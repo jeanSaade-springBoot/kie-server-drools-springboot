@@ -1,0 +1,24 @@
+package plausibcheck.adress
+
+import com.neo.drools.util.CardCalculation;
+import com.neo.drools.model.Card;
+
+rule "Prepaid Card"
+
+    when
+       address : Card(type == "P")
+    then
+       System.out.println("Card it will have maximum top up limit, and many loading limits (monthly, weekly, yearly)!");
+
+end
+
+rule "Credit Card"
+
+    when
+        card : Card( type == "C")
+    then
+       System.out.println("Card it will have limits and fees which will be calculated based on the usage of this card!");
+       CardCalculation.calculateAmount();
+       
+
+end
